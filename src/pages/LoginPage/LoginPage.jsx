@@ -1,16 +1,21 @@
 import { useEffect } from "react";
 import { Form, useActionData, useNavigate } from "react-router-dom";
-// import axios from "axios";
-import { useAuthStore } from "../stores/authStore";
-import { login, register } from "../services/services";
+
+// Styled
+import { LoginContainer, Button } from "./styled";
+
+// Services
+import { useAuthStore } from "../../stores/authStore";
+import { login, register } from "../../services/services";
 
 export async function action({ request }) {
     try {
         let formData = await request.formData();
-        const type = formData.get("type");
+        // const type = formData.get("type");
         const email = formData.get("email");
         const password = formData.get("password");
-        const response = type === "register" ? await register({ email, password }) : await login({ email, password });
+        // const response = type === "register" ? await register({ email, password }) : await login({ email, password });
+        const response = await login({ email, password });
         const { accessToken, refreshToken } = response.data;
         return { tokens: { accessToken, refreshToken }, error: null };
     } catch (error) {
@@ -39,11 +44,12 @@ export function LoginPage() {
     }
 
     return (
-        <div>
+        <LoginContainer>
             <Form method="post">
-                <h1>Login</h1>
+                <h1>Admin Store</h1>
+                <h2>Faça seu login.</h2>
                 {actionData?.error && <div className="alert">{actionData?.error}</div>}
-                <fieldset>
+                {/* <fieldset>
                     <label htmlFor="login">
                         <input type="radio" id="login" name="type" value="login" defaultChecked />
                         Login
@@ -52,14 +58,14 @@ export function LoginPage() {
                         <input type="radio" id="register" name="type" value="register" />
                         Register
                     </label>
-                </fieldset>
+                </fieldset> */}
                 <input type="text" name="email" placeholder="Email" aria-label="Email" required />
                 <input type="password" name="password" placeholder="Password" aria-label="Password" required />
 
-                <button type="submit" className="contrast">
+                <Button type="submit" className="contrast">
                     Login
-                </button>
+                </Button>
             </Form>
-        </div>
+        </LoginContainer>
     );
 }
