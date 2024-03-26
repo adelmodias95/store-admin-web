@@ -6,9 +6,12 @@ import { LoginContainer, Button } from "./styled";
 
 // Services
 import { useAuthStore } from "../../stores/authStore";
-import { login, register } from "../../services/services";
+import { login } from "../../services/services";
 
 export async function action({ request }) {
+    document.querySelector(".alert-error").innerHTML = "";
+    document.querySelector(".alert-error").classList.remove("active");
+
     try {
         let formData = await request.formData();
         // const type = formData.get("type");
@@ -19,6 +22,9 @@ export async function action({ request }) {
         const { accessToken, refreshToken } = response.data;
         return { tokens: { accessToken, refreshToken }, error: null };
     } catch (error) {
+        document.querySelector(".alert-error").innerHTML = error.response.data.message;
+        document.querySelector(".alert-error").classList.add("active");
+
         return {
             error: error?.response?.data?.message || error.message,
             tokens: null,
@@ -46,8 +52,7 @@ export function LoginPage() {
     return (
         <LoginContainer>
             <Form method="post">
-                <h1>Admin Store</h1>
-                <h2>Faça seu login.</h2>
+                <h2>Acesse sua conta.</h2>
                 {actionData?.error && <div className="alert">{actionData?.error}</div>}
                 {/* <fieldset>
                     <label htmlFor="login">
@@ -61,6 +66,8 @@ export function LoginPage() {
                 </fieldset> */}
                 <input type="text" name="email" placeholder="Email" aria-label="Email" required />
                 <input type="password" name="password" placeholder="Password" aria-label="Password" required />
+
+                <small className="alert-error"></small>
 
                 <Button type="submit" className="contrast">
                     Login

@@ -1,16 +1,16 @@
 import { createGlobalStyle } from "styled-components";
 
 const VARIABLES = {
-    // Colors
-    mainColor: "#3f6ad8",
-    titleColor: "#212b36",
-    textColor: "#637381",
-    bodyBgLightTheme: "#f1f4f6",
-    bodyBgDarkTheme: "#f1f4f6",
-
-    // Effects
-    boxShadow:
-        "0 0.46875rem 2.1875rem rgba(4, 9, 20, 0.03), 0 0.9375rem 1.40625rem rgba(4, 9, 20, 0.03), 0 0.25rem 0.53125rem rgba(4, 9, 20, 0.05), 0 0.125rem 0.1875rem rgba(4, 9, 20, 0.03)",
+    lightTheme: {
+        mainColor: "#3f6ad8",
+        titleColor: "#212b36",
+        subTitleColor: "#919eab",
+        textColor: "#495057",
+        bodyBgLightTheme: "#f1f4f6",
+        bodyBgDarkTheme: "#f1f4f6",
+        boxShadow:
+            "0 0.46875rem 2.1875rem rgba(4, 9, 20, 0.03), 0 0.9375rem 1.40625rem rgba(4, 9, 20, 0.03), 0 0.25rem 0.53125rem rgba(4, 9, 20, 0.05), 0 0.125rem 0.1875rem rgba(4, 9, 20, 0.03)",
+    },
 
     // Responsive
     screenXl: "1200px",
@@ -43,7 +43,7 @@ const GlobalStyles = createGlobalStyle`
     }
 
     body {
-        background: ${VARIABLES.bodyBgLightTheme};
+        background: ${VARIABLES.lightTheme.bodyBgLightTheme};
         font-family: "Poppins", sans-serif;
         line-height: 1.5;
         -webkit-font-smoothing: antialiased;
@@ -80,6 +80,11 @@ const GlobalStyles = createGlobalStyle`
         padding-left: 15px;
         margin-right: auto;
         margin-left: auto;
+    }
+
+    main {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
     }
 `;
 

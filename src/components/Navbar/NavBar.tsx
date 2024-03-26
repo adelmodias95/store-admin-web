@@ -15,12 +15,17 @@ export function NavBar() {
                         <nav>
                             <ul>
                                 <li>
-                                    <Link to="/" className="contrast">
+                                    <Link to="/">
                                         <strong>Home</strong>
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link to="/products" className="contrast">
+                                    <Link to="/lojas">
+                                        <strong>Lojas</strong>
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="/produtos">
                                         <strong>Produtos</strong>
                                     </Link>
                                 </li>
@@ -28,7 +33,7 @@ export function NavBar() {
                         </nav>
                         <ul>
                             <li>
-                                <button className="contrast" onClick={() => logout()}>
+                                <button onClick={() => logout()}>
                                     <strong>Logout</strong>
                                 </button>
                             </li>
@@ -36,7 +41,11 @@ export function NavBar() {
                     </div>
                 </Header>
             ) : (
-                <div></div>
+                <Header>
+                    <div className="container justify-center">
+                        <h1 className="text-center">Admin Store</h1>
+                    </div>
+                </Header>
             )}
         </>
     );

@@ -5,7 +5,8 @@ import { PrivateRoute } from "./components/PrivateRoutes";
 import { HomePage } from "./pages/HomePage";
 import { action as loginAction, LoginPage } from "./pages/LoginPage/LoginPage";
 import { LayoutComponent } from "./layouts/LayoutComponent";
-import { Products } from "./pages/Products";
+import { ProductsPage } from "./pages/ProductsPage";
+import { StoresPage } from "./pages/StoresPage";
 
 const router = createBrowserRouter([
     {
@@ -26,10 +27,18 @@ const router = createBrowserRouter([
                 action: loginAction,
             },
             {
-                path: "/products",
+                path: "/produtos",
                 element: (
                     <PrivateRoute>
-                        <Products />
+                        <ProductsPage />
+                    </PrivateRoute>
+                ),
+            },
+            {
+                path: "/lojas",
+                element: (
+                    <PrivateRoute>
+                        <StoresPage />
                     </PrivateRoute>
                 ),
             },

@@ -12,16 +12,11 @@ export const LoginContainer = styled.main`
     top: 0;
     left: 0;
 
-    h1 {
-        color: ${VARIABLES.mainColor};
-        font-size: 2.5rem;
-        font-weight: 700;
-        margin-bottom: 1.5rem;
-    }
-
     h2 {
+        font-size: 2rem;
         text-align: center;
-        color: ${VARIABLES.titleColor};
+        color: ${VARIABLES.lightTheme.titleColor};
+        font-weight: 600;
         margin-bottom: 1rem;
     }
 
@@ -46,32 +41,49 @@ export const LoginContainer = styled.main`
         > input {
             display: block;
             width: 100%;
-            margin-bottom: 1.5rem;
             padding: 15px 20px;
-            background: #1c212c;
-            border: 1px solid #2a3140;
+            background: #fff;
+            border: 1px solid rgba(145, 158, 171, 0.24);
             border-radius: 0.5rem;
 
             font-size: 1rem;
-            color: #e0e3e7;
+            color: ${VARIABLES.lightTheme.textColor};
+
+            & + input {
+                margin-top: 1.5rem;
+            }
 
             &::placeholder {
                 font-size: 1rem;
-                color: #e0e3e7;
+                color: ${VARIABLES.lightTheme.textColor};
+            }
+        }
+
+        small {
+            display: none;
+            margin: 1rem 0 0 0;
+
+            color: #f44336;
+            font-size: 1rem;
+            font-weight: 500;
+
+            &.active {
+                display: block;
             }
         }
 
         > button {
             display: block;
             width: 100%;
-            background: #524ed2;
+            background: ${VARIABLES.lightTheme.mainColor};
             border-radius: 0.5rem;
             padding: 15px 20px;
             cursor: pointer;
             transition: 0.5s all;
+            margin-top: 2rem;
 
             &:hover {
-                background: #655cd6;
+                background: #3b60c0;
             }
         }
     }
