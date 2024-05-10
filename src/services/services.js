@@ -9,5 +9,9 @@ export function login({ email, password }) {
 }
 
 export function getProfile() {
-    return client.get("/users/profile");
+    return client.post(
+        "/users/profile",
+        { token: localStorage.getItem("refreshToken") },
+        { authorization: localStorage.getItem("accessToken") }
+    );
 }

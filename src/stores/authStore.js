@@ -1,8 +1,14 @@
+import { Navigate } from "react-router-dom";
 import { create } from "zustand";
 
 function setTokensToLocalStorage({ accessToken, refreshToken }) {
     localStorage.setItem("accessToken", accessToken);
     localStorage.setItem("refreshToken", refreshToken);
+
+    setTimeout(() => {
+        removeTokensFromLocalStorage();
+        <Navigate to="/login" />;
+    }, 60000);
 }
 
 function removeTokensFromLocalStorage() {
